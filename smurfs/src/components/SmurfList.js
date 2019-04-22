@@ -31,6 +31,7 @@ const mapStateToProps = state => ({
 
 SmurfList.propTypes = {
   getSmurfs: PropTypes.func.isRequired,
+  fetchingSmurfs: PropTypes.bool.isRequired,
   smurfs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

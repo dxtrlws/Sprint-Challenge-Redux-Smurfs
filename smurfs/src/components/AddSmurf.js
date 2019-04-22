@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addSmurf } from '../actions';
 
-export default class AddSmurf extends Component {
-  state = {
-    name: '',
-    age: 0,
-    height: '',
-  };
+class AddSmurf extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: 0,
+      height: '',
+    };
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -13,10 +19,27 @@ export default class AddSmurf extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, age, height } = this.state;
+    const { addSmurf } = this.props;
+    const smurf = {
+      name,
+      age,
+      height,
+    };
+    addSmurf(smurf);
+    this.setState({
+      name: '',
+      age: '',
+      height: '',
+    });
+  };
+
   render() {
     const { name, age, height } = this.state;
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           onChange={this.handleChange}
           placeholder="name"
@@ -38,8 +61,19 @@ export default class AddSmurf extends Component {
           name="height"
           value={height}
         />
-        <button type="submit">Submit</button>
+        <button onSubmit={this.handleSubmit} type="submit">
+          Submit
+        </button>
       </form>
     );
   }
 }
+
+AddSmurf.propTypes = {
+  addSmurf: PropTypes.func.isRequired,
+};
+
+export default connect(
+  () => {},
+  { addSmurf },
+)(AddSmurf);

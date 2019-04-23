@@ -10,4 +10,4 @@
 6.  Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
     1.  `redux-thunk` is middleware that allows us to run our `action-creators` asynchronously. It changes our `action-creators` because we can dispatch serveral actions by the way of `Promises`. 
 7.  Which `react-redux` method links up our `components` with our `redux store`?
-    You would use the `connect` method to connect your redux store to your components.
+    You would use the `connect` method to connect your redux store to your components..

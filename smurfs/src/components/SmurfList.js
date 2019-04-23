@@ -12,7 +12,6 @@ class SmurfList extends Component {
 
   render() {
     const { smurfs, fetchingSmurfs } = this.props;
-    // console.log('this is my ', smurfs);
     if (fetchingSmurfs) return <h1>Loading...</h1>;
     return (
       <div>
@@ -27,6 +26,7 @@ class SmurfList extends Component {
 const mapStateToProps = state => ({
   smurfs: state.smurfs,
   fetchingSmurfs: state.fetchingSmurfs,
+  addingSmurf: state.addingSmurf,
 });
 
 SmurfList.propTypes = {

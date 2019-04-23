@@ -22,7 +22,7 @@ class AddSmurf extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { name, age, height } = this.state;
-    const { addSmurf } = this.props;
+    const { addSmurf, history } = this.props;
     const smurf = {
       name,
       age,
@@ -34,6 +34,7 @@ class AddSmurf extends Component {
       age: '',
       height: '',
     });
+    history.push('/smurfs');
   };
 
   render() {
@@ -71,7 +72,11 @@ class AddSmurf extends Component {
 
 AddSmurf.propTypes = {
   addSmurf: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    location: PropTypes.object.isRequired,
+  }).isRequired,
 };
+
 
 export default connect(
   () => {},
